@@ -7,7 +7,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Integer a[] = new Integer[10];
+		Integer a[] = {45,34};
 		
 		for (int i = 0; i < 10; ++i){
 			
