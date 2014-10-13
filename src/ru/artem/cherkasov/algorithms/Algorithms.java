@@ -1,5 +1,6 @@
 package ru.artem.cherkasov.algorithms;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,12 +28,37 @@ public class Algorithms {
 	public static String reverseLine(String line){
 		
 		String outputLine = "";
-		Integer length = line.length();
+		Field[] fields = line.getClass().getDeclaredFields();
+		Field value = null;
 		
-		for (Integer i = 0; i < length; ++i){
+		for(int i=0; i<fields.length; i++){
 			
-			outputLine = line.charAt(i) + outputLine;
+            Field field = fields[i];
+            if (field.getType().equals(char[].class)){
+                value = field;
+                break;
+            }
+            
+        }
+		
+		value.setAccessible(true);
+		char[] charValue;
+		try {
 			
+			charValue = (char[])value.get(line);
+			
+			for(int i=0; i<charValue.length/2; i++ ){
+	            char tmp=charValue[i];
+	            charValue[i] = charValue[charValue.length-1-i];
+	            charValue[charValue.length-1-i] = tmp;
+	        }
+			
+	        value.set(outputLine, charValue);
+	        
+		} catch (IllegalArgumentException e) {
+
+		} catch (IllegalAccessException e) {
+;
 		}
 		
 		return outputLine;
