@@ -8,8 +8,8 @@ public class Algorithms {
 	
 	public static Integer maxElement(Integer arr[]){
 		
-		Integer length = arr.length;
-		Integer maxElement = arr[0]; 
+		int length = arr.length;
+		int maxElement = arr[0]; 
 		
 		for (Integer i = 0; i < length; ++i){
 			
@@ -68,7 +68,7 @@ public class Algorithms {
 	public static Map<String, Integer> frequencyLetters(String line){
 		
 		Map<String, Integer> outputMap = new HashMap<String, Integer>();
-		Integer length = line.length();
+		int length = line.length();
 		
 		for (Integer i = 0; i < length; ++i){
 			
